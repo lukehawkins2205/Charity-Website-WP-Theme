@@ -1,0 +1,74 @@
+
+.head-heading {
+  color: white;
+}
+
+.head-col {
+  padding-top: 8%;
+  padding-bottom: 8%;
+}
+
+
+.form-cont {
+  /*background: url(/assets/img/download.png);*/
+  padding-top: 25px;
+  padding-bottom: 30px;
+}
+
+.guest-card-body {
+  outline: 1px solid #cdcdcd;
+  outline-offset: -15px;
+  border-radius: 0;
+}
+
+.intro-wrap {
+  border-left-style: solid;
+  border-left-color: #192644;
+  border-left-width: 4px;
+  padding-left: 20px;
+}
+
+.guest-section-top {
+  margin-top: 40px;
+}
+
+.row-bottom {
+  margin-bottom: 25px;
+}
+
+.comment-row {
+  margin-top: 15px;
+}
+
+.container.contact-title {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.box-shadow {
+  box-shadow: 0 15px 25px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.15);
+}
+
+.comment-card {
+  border-color: #192644;
+  border-left-style: solid;
+}
+
+.comment-card-padding {
+  margin: 5px;
+}
+
+.comment-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.padding-top{
+  padding-top: 25px;
+}
+
+
+.btn-home-icon{
+  padding-right: 7px;
+}
+

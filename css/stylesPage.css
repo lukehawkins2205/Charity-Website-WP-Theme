@@ -1,0 +1,16 @@
+/*.head-jumbo {
+  background: linear-gradient(130deg, rgba(25,38,68,1) 0%, rgba(25,38,68,0.8435749299719888) 91%);
+}
+*/
+.head-heading {
+  color: white;
+}
+
+.head-col {
+  padding-top: 12%;
+  padding-bottom: 12%;
+  background: url(/assets/img/logo3.svg) center / contain no-repeat;
+}
+
+
+
