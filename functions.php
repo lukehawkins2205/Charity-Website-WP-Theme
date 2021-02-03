@@ -115,7 +115,7 @@ class CVF_Posts {
        
         if (isset($_POST['message'])) {
            
-            $to = 'john.hines57@sky.com';
+            $to = 'email@outlook.com';
             $headers = 'From: ' . $_POST['name'] . ' <"' . $_POST['email'] . '">';
             $subject = "New Member Enquiry | Name: " . $_POST['name'];
            
@@ -143,7 +143,7 @@ class CVF_Posts {
             }
         }else{
 
-	        $to = 'john.hines57@sky.com';
+	        $to = 'email@outlook.com';
 	        $headers = 'From: ' . $_POST['name'] . ' <"' . $_POST['email'] . '">';
 	        $subject = "Event Submission | Name: " . $_POST['name'];
 
