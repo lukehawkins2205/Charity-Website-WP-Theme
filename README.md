@@ -2,7 +2,7 @@
 
 Hi! This is a website that I developed for a local charity. They needed an online presence but also required a central repository for members to keep up to date with the latest news from their charity. The perfect solution for this was to build a website with a CMS attached to it. 
 
->The live website uses a locked repo. You can find the link to it via linktr.ee
+>This repo is not used for the live website. I have linked the live website in linktr.ee
 
 ## Technologies
 
