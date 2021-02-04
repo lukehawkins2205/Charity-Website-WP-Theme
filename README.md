@@ -1,24 +1,20 @@
 # Charity Website
 
-Hi! This is a website that I developed for a local charity. They wanted an online presence but also a central repository for members to keep up to date with the latest news from their charity. 
+Hi! This is a website that I developed for a local charity. They needed an online presence but also required a central repository for members to keep up to date with the latest news from their charity. The perfect solution for this was to build a website with a CMS attached to it. 
 
 
-# Technologies
+## Technologies
 
  - Javascript ES6
  - Jquery
  - HTML
  - CSS
  - PHP
- - React
- - Webpack bundler
- - Wordpress CMS
+ - Webpack
+ - Wordpress
  - NPM
- - Node.js
- - Google Maps API
- - Facebook Page API
 
-# Libraries
+## Libraries
 
  - FontAwesome
  - Bootstrap 4
@@ -26,45 +22,25 @@ Hi! This is a website that I developed for a local charity. They wanted an onlin
  - React
  - AOS
 
-# Features
+## API
+
+ - Wordpress API
+ - Facebook API
+ - Google Maps API
+
+# Showcase
 ## **Authentication**
 
 > Members of the charity can login to the website to access private
 > content that is not visible to the public.
 
-After authentication, a **X-WP-Nonce** is generated server side in **functions.php** and is retrieved as a **variable** in **header.php**. This is placed in the **header** of **AJAX** calls when making a request to the **API** for **validation**.
+After authentication, a **X-WP-Nonce** is generated server side and is retrieved as a **variable** in **header.php** (This travels across all pages). For security, this is placed in the **header** of **AJAX** calls when making a request to the **REST API** for **validation**.
 
-## **Fetching posts via AJAX**
+## Using **AJAX** to load searched WordPress content
 
-> There are two pages that take advantage of using **AJAX**. That is the
-> events page and articles page.  Technically, its one **HTML** document
-> (**page-articles.php**) which utilizes **React** for **state
-> management**
-> (**assets\src\js\components\search-page-component\index.js**).
+> Located on the events and articles page. Depending on the **URL**, **React** **state** changes to either show a **calendar** or **input field** for text search
 
-**Events page**
-When 'events' is identified in the URL, the state of the **search-page-component** changes to display the calendar.
-
-Transferring the date from the **MonthPicker** component (child) to **search-page-component** (Parent), A callback was needed due to this being the location of the AJAX calls
-
-**Inside search-page-component** (Parent): 
-   
-
-     <MonthPicker  date={this.getDate.bind(this)}></MonthPicker>
-
-**Inside MonthPicker** component (child) 
-
-    handleAMonthChange = (year, month) => {
-        let newState = {
-            singleValue: {
-                year: year,
-                month: month
-            },
-        }
-        this.props.date(newState.singleValue);
-    }
-
-Example of AJAX call in search-page-component
+Example AJAX function:
 
     $.ajax({
                 beforeSend: (xhr) => {
@@ -95,14 +71,9 @@ Example of AJAX call in search-page-component
                     console.log('error with get post', data)
                 }
             })
+After making the **REST API** call, an **event hook** configured in **PHP** retrieves the **parameters** from within the **URL** to **validate** the user and customize the **JSON** data.
 
-**Articles Page**
-When 'articles' is identified in the URL, the state of the **search-page-component** changes to display a **HTML input tag**. Once the user clicks to search, an **event handler** retrieves the value and makes an **AJAX call**. 
-
-> Page uses AJAX to make a call to the CMS API using custom query params
-> located in **search-route.php** to retrieve the filtered posts.
-
-Example of custom query
+Example of **event hook**:
 
     add_action('rest_api_init', 'lodgeInitialPostLoad');
 
@@ -155,25 +126,48 @@ Example of custom query
     }
 
 
-## **SMTP**
 
-> On the homepage, you will find a **bootstrap** modal that displays a
-> **HTML form** for users that are interested in joining the charity. Once filled out, this will send an email to the desired email address.
+## **Sending emails via SMTP**
 
-When the form is submitted, it is passed to an **event handler** which retrieves the values and makes an **AJAX** call to the **CMS API**. Within **functions.php**, **cvf_send_message()** retrieves this data and constructs a **HTML** **email template** with the passed information and sends it to the configured destination via **SMTP**. 
+> Using the **CSS framework Bootstrap 4**, I created a **modal** that
+> displayed a form when clicked. Once submitted, an **event handler** in
+> **Javascript** prevents the **default behaviour** and constructs an **AJAX** call to the wordpress **REST API**.
 
-Event handler Location: assets\src\js\old\index.js
-SMTP function: functions.php
 
+                $('#myemailform').on('submit', (e) => {
+                    e.preventDefault();
+                    var ajaxurl = $('#input-ajax').val();
+
+                  var data = {
+	                'action': 'cvf_send_message',
+	                'name': $('#input-name').val(),
+	                'email': $('#input-email').val(),
+	                'message': $('#input-message').val()
+                  };
+
+                    $.ajax({
+                        type: "POST",
+                        url: ajaxurl,
+                        data: data,
+                        success: (data) => {
+                            $('.join-email-success').css({'display': 'block'});
+                        }
+                    });
+                });
+
+
+
+After making the **REST API** call, an **event hook** configured in **PHP** retrieves the data from within the body of the request and constructs a **HTML** email which is then sent to the desired location via **SMTP**
 
 ## **Compatible across all browsers**
 This was possible by using **Babel**
 ## **Designed Mobile first**
-CSS framework **Bootstrap** was used to structure the website which dynamically adjust the website to the device it is used on. 
+CSS framework **Bootstrap 4** was used to structure the website so that it can be dynamic across all devices with ease.
 ## **Custom Post Types**
-The charity desired to be able to post events so a custom post type that has date properties has been created to manipulate that. 
+**Posts** with **date**, **location** and **time** properties.
+
 ## **Custom Comments**
-The charity required a guest book for members of different charities could sign it. The basic comments wp functions have been manipulated to only display on the guestbook page.
+The charity required a guest book for other charities to comment on. From this information, I created **filter hooks** to modify the **comment form defaults**.
 
  
 
