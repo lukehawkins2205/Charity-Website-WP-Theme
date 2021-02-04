@@ -169,7 +169,3 @@ CSS framework **Bootstrap 4** was used to structure the website so that it can b
 
 ## **Custom Comments**
 The charity required a guest book for other charities to comment on. From this information, I created **filter hooks** to modify the **comment form defaults**.
-
- 
-
-```
