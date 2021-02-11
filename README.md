@@ -43,7 +43,7 @@ After authentication, a **X-WP-Nonce** is generated server side and is retrieved
 
 ## Using **AJAX** to load searched WordPress content
 
-> Located on the events and articles page. Depending on the **URL**, **React** **state** changes to either show a **calendar** or **input field** for text search
+> Located on the events and articles page. Depending on the **URL**, **React** **state** changes to either show a **calendar** or **input field** for keyword search
 
 After making the **REST API** call, an **event hook** configured in **PHP** retrieves the **parameters** from within the **URL** to **validate** the user and customize the **JSON** data.
 
