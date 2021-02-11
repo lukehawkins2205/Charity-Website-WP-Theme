@@ -2,7 +2,8 @@
 
 Hi! This is a custom wordpress template that I developed for three local charities. They needed an online presence but also required a central repository for members to keep up to date with the latest news from their charity. The perfect solution for this was to build a website with a CMS attached to it. 
 
->This repo is not used for the live website. I have linked the live website in linktr.ee
+>This repo is not used for the live website. 
+Link to live site: https://twynhamlodge5889.co.uk/
 
 ## Technologies
 
