@@ -2,8 +2,8 @@
 
 Hi! This is a website that I developed for a local charity. They needed an online presence but also required a central repository for members to keep up to date with the latest news from their charity. The perfect solution for this was to build a website with a CMS attached to it. 
 
-> This is a clone repository. 
-> Live website: [Twynham Lodge 5889](https://twynhamlodge5889.co.uk/)
+> This is a clone repository of the live repository that I use for [Twynham Lodge 5889](https://twynhamlodge5889.co.uk/). 
+
 
 
 ## Technologies
@@ -16,6 +16,7 @@ Hi! This is a website that I developed for a local charity. They needed an onlin
  - Webpack
  - Wordpress
  - NPM
+ -AJAX
 
 ## Libraries
 
@@ -47,7 +48,7 @@ Members of the charity can login to the website to access private content that i
 ![enter image description here](https://user-images.githubusercontent.com/59560236/107665947-dbdbd700-6c85-11eb-9996-6eb567c4ab88.png)
 
 ## **Sign up form**
-When a reader signs up, the contents of the form are sent to the designated email address to handle. 
+The contents of the form is sent to the designated email address via SMTP to handle. 
 ![enter image description here](https://user-images.githubusercontent.com/59560236/107666024-f44bf180-6c85-11eb-92c6-43ebf0fb289a.png)
 ## **Compatible across all browsers**
 This was possible by using **Babel**
