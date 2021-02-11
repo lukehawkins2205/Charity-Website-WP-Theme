@@ -47,89 +47,11 @@ After authentication, a **X-WP-Nonce** is generated server side and is retrieved
 
 After making the **REST API** call, an **event hook** configured in **PHP** retrieves the **parameters** from within the **URL** to **validate** the user and customize the **JSON** data.
 
-Example of **event hook**:
-
-    add_action('rest_api_init', 'lodgeInitialPostLoad');
-
-    function lodgeInitialPostLoad(){
-        register_rest_route('lodge/v1','initialPostLoad',array(
-            'methods' => WP_REST_SERVER::READABLE,
-            'callback' => 'lodgeInitialPostLoadResults'
-        ));
-    }
-    
-    function lodgeInitialPostLoadResults($data){
-
-	$headerStringValue = $_SERVER['HTTP_X_CUSTOM_HEADER'];
-
-	if(is_user_logged_in() AND $headerStringValue === 'lodge-private'){
-		$args = array(
-			'post_type' => 'post',
-            'post_status' => 'private',
-            'posts_per_page' => 8,
-            'paged' => $data['offset']
-		);
-	}else{
-		$args = array(
-			'post_type' => 'post',
-            'post_status' => 'publish',
-            'posts_per_page' => 8,
-            'paged' => $data['offset']
-		);
-	}
-
-    $events = new WP_Query($args);
-
-    $eventResults = array();
-
-    while($events->have_posts()){
-        $events->the_post();
-
-
-        array_push($eventResults,array(
-            
-            'title' => get_the_title(),
-            'permalink' => get_permalink(),
-            'image' => get_field('header_image'),
-            'excerpt' => get_field('small_text'),
-        ));
-    }
-    
-
-    return $eventResults;
-    }
-
-
-
 ## **Sending emails via SMTP**
 
 > Using the **CSS framework Bootstrap 4**, I created a **modal** that
 > displayed a form when clicked. Once submitted, an **event handler** in
 > **Javascript** prevents the **default behaviour** and constructs an **AJAX** call to the wordpress **REST API**.
-
-
-                $('#myemailform').on('submit', (e) => {
-                    e.preventDefault();
-                    var ajaxurl = $('#input-ajax').val();
-
-                  var data = {
-	                'action': 'cvf_send_message',
-	                'name': $('#input-name').val(),
-	                'email': $('#input-email').val(),
-	                'message': $('#input-message').val()
-                  };
-
-                    $.ajax({
-                        type: "POST",
-                        url: ajaxurl,
-                        data: data,
-                        success: (data) => {
-                            $('.join-email-success').css({'display': 'block'});
-                        }
-                    });
-                });
-
-
 
 After making the **REST API** call, an **event hook** configured in **PHP** retrieves the data from within the body of the request and constructs a **HTML** email which is then sent to the desired location via **SMTP**
 
