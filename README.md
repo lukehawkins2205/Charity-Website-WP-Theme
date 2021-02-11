@@ -1,9 +1,10 @@
 # Charity Website
 
-Hi! This is a custom wordpress template that I developed for three local charities. They needed an online presence but also required a central repository for members to keep up to date with the latest news from their charity. The perfect solution for this was to build a website with a CMS attached to it. 
+Hi! This is a website that I developed for a local charity. They needed an online presence but also required a central repository for members to keep up to date with the latest news from their charity. The perfect solution for this was to build a website with a CMS attached to it. 
 
->This repo is not used for the live website. 
-Link to live site: https://twynhamlodge5889.co.uk/
+> This is a clone repository. 
+> Live website: [Twynham Lodge 5889](https://twynhamlodge5889.co.uk/)
+
 
 ## Technologies
 
@@ -26,41 +27,39 @@ Link to live site: https://twynhamlodge5889.co.uk/
 
 ## REST API
 
- - Wordpress API
- 
- 
-## Imbed Links
- - Facebook Timeline
- - Google Maps
+ - Wordpress REST API
 
-# Showcase
+## Imbed Links
+ - Facebook
+ - Google Maps API
+
+# Features
 ## **Authentication**
 
-> Members of the charity can login to the website to access private
-> content that is not visible to the public.
+Members of the charity can login to the website to access private content that is not visible to the public.![enter image description here](https://user-images.githubusercontent.com/59560236/107666019-f3b35b00-6c85-11eb-8d1c-3898add41de4.png)
 
-After authentication, a **X-WP-Nonce** is generated server side and is retrieved as a **variable** in **header.php** (This travels across all pages). For security, this is placed in the **header** of **AJAX** calls when making a request to the **REST API** for **validation**.
 
-## Using **AJAX** to load searched WordPress content
+![enter image description here](https://user-images.githubusercontent.com/59560236/107666020-f3b35b00-6c85-11eb-8a3c-19969ac4e4fe.png)
+## Keyword Search for Articles
+![enter image description here](https://user-images.githubusercontent.com/59560236/107666017-f31ac480-6c85-11eb-8b39-01245a6ab5ca.png)
 
-> Located on the events and articles page. Depending on the **URL**, **React** **state** changes to either show a **calendar** or **input field** for keyword search
+## React Month Calender for searching Events
+![enter image description here](https://user-images.githubusercontent.com/59560236/107665947-dbdbd700-6c85-11eb-9996-6eb567c4ab88.png)
 
-After making the **REST API** call, an **event hook** configured in **PHP** retrieves the **parameters** from within the **URL** to **validate** the user and customize the **JSON** data.
-
-## **Sending emails via SMTP**
-
-> Using the **CSS framework Bootstrap 4**, I created a **modal** that
-> displayed a form when clicked. Once submitted, an **event handler** in
-> **Javascript** prevents the **default behaviour** and constructs an **AJAX** call to the wordpress **REST API**.
-
-After making the **REST API** call, an **event hook** configured in **PHP** retrieves the data from within the body of the request and constructs a **HTML** email which is then sent to the desired location via **SMTP**
-
+## **Sign up form**
+When a reader signs up, the contents of the form are sent to the designated email address to handle. 
+![enter image description here](https://user-images.githubusercontent.com/59560236/107666024-f44bf180-6c85-11eb-92c6-43ebf0fb289a.png)
 ## **Compatible across all browsers**
 This was possible by using **Babel**
-## **Designed Mobile first**
+## **Mobile Compatible**
 CSS framework **Bootstrap 4** was used to structure the website so that it can be dynamic across all devices with ease.
 ## **Custom Post Types**
-**Posts** with **date**, **location** and **time** properties.
+**Posts** with **date**, **location** and **time** properties. This allows for 'Event Posts'
 
 ## **Custom Comments**
-The charity required a guest book for other charities to comment on. From this information, I created **filter hooks** to modify the **comment form defaults**.
+The charity required a guest book for other charities to comment on. From this information, I created **filter hooks** to modify the **comment form defaults** which displays approved comments on the guest page. 
+![enter image description here](https://user-images.githubusercontent.com/59560236/107666420-691f2b80-6c86-11eb-8552-8a0207f0299f.png)
+
+ 
+
+```
