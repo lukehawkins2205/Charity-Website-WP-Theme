@@ -23,11 +23,14 @@ Hi! This is a custom wordpress template that I developed for three local chariti
  - React
  - AOS
 
-## API
+## REST API
 
  - Wordpress API
- - Facebook API
- - Google Maps API
+ 
+ 
+## Imbed Links
+ - Facebook Timeline
+ - Google Maps
 
 # Showcase
 ## **Authentication**
@@ -41,37 +44,6 @@ After authentication, a **X-WP-Nonce** is generated server side and is retrieved
 
 > Located on the events and articles page. Depending on the **URL**, **React** **state** changes to either show a **calendar** or **input field** for text search
 
-Example AJAX function:
-
-    $.ajax({
-                beforeSend: (xhr) => {
-                    xhr.setRequestHeader('X-WP-Nonce', lodgeData.nonce);
-                },
-                url: `${lodgeData.root_url}//wp-json/lodge/v1/search?date=${selectedYear}${selectedMonth}&offset=${pageOn}`,
-                headers: { 'X-CUSTOM-HEADER': 'lodge-private' },
-                type: 'GET',
-                success: (returnedPosts) => {
-                    this.setState(prevState => ({
-                        singleValue: {
-                            ...prevState.singleValue,
-                            posts: returnedPosts,
-                            prevPageOn: this.state.singleValue.pageOn,
-                            hasRunGetDate: true,
-                            month: selectedMonth,
-                            year: selectedYear
-                        }
-                    }), () => {
-                        if(returnedPosts.length === 0){
-                            $('#next-btn').css({'display': 'none'})
-                        }else{
-                            $('#next-btn').css({'display': 'block'})
-                        }
-                    })
-                },
-                error: (data) => {
-                    console.log('error with get post', data)
-                }
-            })
 After making the **REST API** call, an **event hook** configured in **PHP** retrieves the **parameters** from within the **URL** to **validate** the user and customize the **JSON** data.
 
 Example of **event hook**:
