@@ -16,7 +16,8 @@ Hi! This is a website that I developed for a local charity. They needed an onlin
  - Webpack
  - Wordpress
  - NPM
- -AJAX
+ - AJAX
+
 
 ## Libraries
 
