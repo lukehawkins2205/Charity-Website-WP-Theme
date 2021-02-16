@@ -1,4 +1,4 @@
-# Charity Website
+# Charity Website (Custom Wordpress Theme)
 
 Hi! This is a website that I developed for a local charity. They needed an online presence but also required a central repository for members to keep up to date with the latest news from their charity. The perfect solution for this was to build a website with a CMS attached to it. 
 
